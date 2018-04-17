@@ -1,20 +1,21 @@
 package com.rhdzmota.webapp
 
+import org.querki.jquery._
 import org.scalajs.dom
-import dom.document
 
 object App {
 
   def main(args: Array[String]): Unit = {
-    appendPar(document.body, "Hello World!")
-
+    $(() => setupUI())
   }
 
-  def appendPar(targetNode: dom.Node, text: String): Unit = {
-    val parNode = document.createElement("p")
-    val textNode = document.createTextNode(text)
-    parNode.appendChild(textNode)
-    targetNode.appendChild(parNode)
+  def setupUI(): Unit = {
+    $("body").append("<p>Click the button.<p>")
+    $("#click-me-button").click(() => addClickedMessage())
+  }
+
+  def addClickedMessage(): Unit = {
+    $("body").append("<p>Hello World!<p>")
   }
 
 }
